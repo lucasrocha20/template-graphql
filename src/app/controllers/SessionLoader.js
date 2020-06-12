@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 
-import User from "../users/UserModel";
+import User from "../../app/models/UserModel";
 import authConfig from '../../config/auth';
   
 export async function sessionUser(_, {input}) {

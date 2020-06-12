@@ -1,7 +1,7 @@
 import { GraphQLSchema, GraphQLObjectType } from "graphql";
 
-import rootQuery from "./modules/rootQuery";
-import rootMutation from "./modules/rootMutation";
+import rootQuery from "./app/modules/rootQuery";
+import rootMutation from "./app/modules/rootMutation";
 
 export default new GraphQLSchema({
   query: new GraphQLObjectType({

@@ -6,7 +6,7 @@ import {
 } from "graphql"
 
 import SessionType from "./SessionType"
-import { sessionUser } from "./SessionLoader"
+import { sessionUser } from '../../controllers/SessionLoader';
 
 export const sessionMutations = {
   sessionUser: {

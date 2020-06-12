@@ -6,12 +6,17 @@ import {
 } from "graphql"
 
 import UserType from "./UserType"
-import { getUsers, saveUser, deleteUser } from "./UserLoader"
+import { getUsers, saveUser } from '../../controllers/UserLoader';
+
+import authMiddleware from '../../middlewares/auth';
 
 export const queries = {
   users: {
     type: GraphQLList(UserType),
-    resolve: getUsers
+    resolve: async (parent, args, context) => {
+        await authMiddleware(context.token)
+        return getUsers()
+    }
   }
 }
 
@@ -38,11 +43,4 @@ export const userMutations = {
       }
     }
   },
-  deleteUser: {
-    type: UserType,
-    resolve: deleteUser,
-    args: {
-      id: { type: new GraphQLNonNull(GraphQLString) }
-    }
-  }
 }
